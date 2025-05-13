@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://o6g2bts5meqf"]
+
+[ext_resource type="PackedScene" uid="uid://u064f5s1wlrv" path="res://scenes/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="PackedScene" uid="uid://47nw804o8y8d" path="res://scenes/door/door.tscn" id="2_iuonh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hyk8p"]
+sky_top_color = Color(9.91493e-06, 0.632722, 0.824284, 1)
+sky_horizon_color = Color(0.599003, 0.677246, 0.793267, 1)
+sky_curve = 0.0461679
+ground_bottom_color = Color(0.599003, 0.677246, 0.793267, 1)
+ground_horizon_color = Color(0.599003, 0.677246, 0.793267, 1)
+
+[sub_resource type="Sky" id="Sky_iuonh"]
+sky_material = SubResource("ProceduralSkyMaterial_hyk8p")
+
+[sub_resource type="Environment" id="Environment_k2fmo"]
+background_mode = 2
+sky = SubResource("Sky_iuonh")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyk8p"]
+albedo_color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[node name="Main" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k2fmo")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_hyk8p")]
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_hyk8p")
+
+[node name="Door" parent="." instance=ExtResource("2_iuonh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Door2" parent="." instance=ExtResource("2_iuonh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)

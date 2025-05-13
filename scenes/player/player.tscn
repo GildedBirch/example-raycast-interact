@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://u064f5s1wlrv"]
+
+[ext_resource type="Script" uid="uid://d1ffh6buwio1a" path="res://scenes/player/player.gd" id="1_8afob"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
+radius = 0.25
+height = 1.8
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_8afob")
+ray_mask = 1
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_x7p2l")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 241.0
+offset_bottom = 87.0
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 24
+text = "ESC to close game
+WASD to move
+Left Mouse button to interact"
