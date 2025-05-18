@@ -47,7 +47,7 @@ func _interact() -> void:
 	if not hit:
 		return
 	# Get collider from raycasts dictionary
-	var collider: TargetArea3D = hit["collider"]
+	var collider: Area3D = hit["collider"]
 	# Print out what we hit and where for debug
 	print("Node %s got hit at position %s" % [collider.name, hit["position"]])
 	# If the Area wasn't TargetArea3D return
