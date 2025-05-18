@@ -9,4 +9,4 @@ extends Area3D
 
 ## This interact function should be overwritten by classes that inherit this base class
 func interact() -> void:
-	pass
+	push_warning("Interact not implemented in %s" % name)
